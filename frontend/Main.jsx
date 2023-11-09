@@ -10,7 +10,7 @@ const Main = () => {
   return <NavigationContainer>
      <Stack.Navigator >
       <Stack.Group>
-                 < Stack.Screen name="home" component={Home}/>
+                 < Stack.Screen name="home" component={Home} options={{headers}}/>
       </Stack.Group>
      </Stack.Navigator>
 
