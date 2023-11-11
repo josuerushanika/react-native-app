@@ -5,6 +5,7 @@ import { defaultStyle, colors } from "../styles/styles";
 import Header from "../components/Header";
 import { Avatar, Button } from "react-native-paper";
 import SearchModal from "../components/SearchModal";
+import ProductCard from "../components/ProductCard";
 
 const categories = [
   { category: "Nice", _id: "sndjskad" },
@@ -17,14 +18,15 @@ const categories = [
   { category: "Nice9", _id: "sndjskajijdjd" },
 ];
 
-const products = [{
-  price: 23123,
-  name: "Sample",
-  _id: "Sadayawiwo",
-  images: [{
-  }], url:  "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdlinkmea.com%2Findex.php%2Fproduct%2Fdetails%3Fdet%3DdkNPSHNzb2ZwY3dMUUlibTZFOVBpQT09&psig=AOvVaw1fANaL8XifQVyYPqeneo2L&ust=1699753019131000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPjl5MnnuoIDFQAAAAAdAAAAABAZ"
-  
-}];
+const products = [
+  {
+    price: 23123,
+    name: "Sample",
+    _id: "Sadayawiwo",
+    images: [{}],
+    url: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdlinkmea.com%2Findex.php%2Fproduct%2Fdetails%3Fdet%3DdkNPSHNzb2ZwY3dMUUlibTZFOVBpQT09&psig=AOvVaw1fANaL8XifQVyYPqeneo2L&ust=1699753019131000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPjl5MnnuoIDFQAAAAAdAAAAABAZ",
+  },
+];
 
 const Home = () => {
   const [category, setCategory] = useState("");
@@ -112,8 +114,19 @@ const Home = () => {
             ))}
           </ScrollView>
         </View>
-
-        {/* Product */}
+      </View>
+      {/* Product */}
+      <View style={{ flex: 1 }}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+        >
+          {
+            products.map(() => (
+              <ProductCard/>
+            ))
+          }
+        </ScrollView>
       </View>
     </>
   );
