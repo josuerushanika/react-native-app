@@ -3,6 +3,7 @@ import {
   Text,
   Platform,
   StatusBar,
+  Image,
   SafeAreaView,
   ScrollView,
   TouchableOpacity,
@@ -70,7 +71,7 @@ const SearchModal = ({
                 name={i.name}
                 price={i.price}
                 handler={() =>
-                  Navigate.navigate("productdetails", { id: i._id })
+                  navigate.navigate("productdetails", { id: i._id })
                 }
               />
             ))}
@@ -96,18 +97,19 @@ const SearchItem = ({ price, name, imgSrc, handler }) => (
         marginVertical: 30,
       }}
     >
+  
       <Image
         source={{
           uri: imgSrc,
         }}
         style={{
-          with: 80,
+          width: 80,
           height: 80,
           position: "absolute",
           resizeMode: "contain",
           top: -15,
           left: 10,
-          borderTopLeftRaduis: 20,
+          borderTopLeftRadius: 20,
           borderBottomRightRadius: 20,
         }}
       />
