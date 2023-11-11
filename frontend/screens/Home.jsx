@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import { Avatar, Button } from "react-native-paper";
 import SearchModal from "../components/SearchModal";
 import ProductCard from "../components/ProductCard";
+import { useNavigation } from "@react-navigation/native";
 
 const categories = [
   { category: "Nice", _id: "sndjskad" },
@@ -21,6 +22,7 @@ const categories = [
 const products = [
   {
     price: 23123,
+    stock: 23,
     name: "Sample",
     _id: "Sadayawiwo",
     images: [{}],
@@ -33,8 +35,14 @@ const Home = () => {
   const [activeSearch, setActiveSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
+  const navigate = useNavigation()
+
   const categoryButtonHandler = (id) => {
     setCategory(id);
+  };
+
+  const addToCardHandler = (id) => {
+    console.log("Add to cart ", id);
   };
 
   console.log(category);
@@ -117,15 +125,20 @@ const Home = () => {
       </View>
       {/* Product */}
       <View style={{ flex: 1 }}>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-        >
-          {
-            products.map(() => (
-              <ProductCard/>
-            ))
-          }
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {products.map((item, index) => (
+            <ProductCard
+              stock={item.stock}
+              name={item.name}
+              price={item.price}
+              image={item.images[0]?.url}
+              addToCardHandler={addToCardHandler}
+              id={item._id}
+              key={item._id}
+              i={index}
+              navigate={navigate}
+            />
+          ))}
         </ScrollView>
       </View>
     </>

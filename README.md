@@ -1,5 +1,5 @@
 # next-appsite
 
-3 .6  But debug code from video 5
+3 .6 .6min 55
 
 https://github.com/meabhisingh/udemy-mernstack-app
