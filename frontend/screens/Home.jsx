@@ -28,6 +28,15 @@ const products = [
     images: [{}],
     url: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdlinkmea.com%2Findex.php%2Fproduct%2Fdetails%3Fdet%3DdkNPSHNzb2ZwY3dMUUlibTZFOVBpQT09&psig=AOvVaw1fANaL8XifQVyYPqeneo2L&ust=1699753019131000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPjl5MnnuoIDFQAAAAAdAAAAABAZ",
   },
+
+  {
+    price: 29126,
+    stock: 98,
+    name: "workable",
+    _id: "Sadayyuyuyawiwo",
+    images: [{}],
+    url: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdlinkmea.com%2Findex.php%2Fproduct%2Fdetails%3Fdet%3DdkNPSHNzb2ZwY3dMUUlibTZFOVBpQT09&psig=AOvVaw1fANaL8XifQVyYPqeneo2L&ust=1699753019131000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPjl5MnnuoIDFQAAAAAdAAAAABAZ",
+  },
 ];
 
 const Home = () => {

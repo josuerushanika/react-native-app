@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { colors } from "../styles/styles";
+import { Button } from "react-native-paper";
 
 const ProductCard = ({
   stock,
@@ -14,6 +15,7 @@ const ProductCard = ({
 }) => {
   return (
     <TouchableOpacity
+      activeOpacity={1}
       onPress={() => navigate.navigate("productdetails", { id })}
     >
       <View
@@ -62,13 +64,25 @@ const ProductCard = ({
             numberOfLines={2}
             style={{
               color: i % 2 === 0 ? colors.color2 : colors.color3,
-              fontSize: 5,
-              fontWeight: "300",
+              fontSize: 20,
+              fontWeight: "700",
             }}
           >
             ${price}
           </Text>
         </View>
+        <TouchableOpacity
+          style={{
+            backgroundColor: i % 2 === 0 ? colors.color2 : colors.color3,
+            borderRadius: 0,
+            borderBottomRightRadius: 20,
+            borderBottomLeftRadius: 20,
+            width: "100%",
+
+          }}
+        >
+          <Button onPress={() => addToCardHandler(id,stock)} textColor={i%2===0?colors.color1:colors.color2}>Add To Cart</Button>
+        </TouchableOpacity>
       </View>
     </TouchableOpacity>
   );
