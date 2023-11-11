@@ -1,3 +1,3 @@
 # next-appsite
 
-5 search item
+3 .6  But debug code from video 5
