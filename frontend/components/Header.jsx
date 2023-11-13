@@ -4,7 +4,7 @@ import { Avatar } from "react-native-paper";
 import { colors } from "../styles/styles";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
-const Header = ({ back , emptyCart=false }) => {
+const Header = ({  back , emptyCart=false }) => {
   const navigate = useNavigation();
   const route = useRoute();
   const emptyCartHandler  =  () => {
