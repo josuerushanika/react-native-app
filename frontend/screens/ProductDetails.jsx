@@ -15,15 +15,25 @@ import { Avatar } from "react-native-paper";
 
 const SLIDER_WIDTH = Dimensions.get("window").width;
 const ITEM_WIDTH = SLIDER_WIDTH;
+const iconOptions = {
+  size: 20,
+  style: {
+    borderRadius: 5,
+    backgroundColor: colors.color5,
+    height: 25,
+    width: 25,
+  },
+};
 
 const ProductDetails = ({ route: { params } }) => {
   console.log(params.id);
 
   const name = "Macbook Pro";
   const price = 34909;
+  const stock = 5;
   const isCarousel = useRef(null);
   const description = "dhhddhdh";
- const [quantity, setQuantity] = useState() 
+  const [quantity, setQuantity] = useState();
 
   const images = [
     {
@@ -36,13 +46,15 @@ const ProductDetails = ({ route: { params } }) => {
     },
   ];
 
-  const incrementQty=()=> {
-    setQuantity(prev => prev + 1);
-  }
+  const incrementQty = () => {
+    if (stock <= quantity) return;
+    setQuantity((prev) => prev + 1);
+  };
 
-  const decrementQty=()=> {
-    setQuantity(prev => prev + 1);
-  }
+  const decrementQty = () => {
+    if (quantity <= 1) return;
+    setQuantity((prev) => prev + 1);
+  };
 
   return (
     <View
@@ -107,42 +119,16 @@ const ProductDetails = ({ route: { params } }) => {
             }}
           >
             <TouchableOpacity onPress={decrementQty}>
-              <Avatar.Icon
-                icon={"minus"}
-                size={20}
-                style={{
-                  borderRadius: 5,
-                  backgroundColor: colors.color5,
-                  height: 25,
-                  width: 25,
-                }}
-              />
+              <Avatar.Icon icon={"minus"} {...iconOptions} />
             </TouchableOpacity>
             <Text
-              style={{
-                backgroundColor: colors.color4,
-                height: 25,
-                width: 25,
-                textAlignVertical: "center",
-                textAlign: "center",
-                borderRadius: "5",
-                borderColor: colors.color5,
-              }}
+              style={style.quantity}
             >
               {quantity}
             </Text>
 
             <TouchableOpacity onPress={incrementQty}>
-              <Avatar.Icon
-                icon={"plus"}
-                size={20}
-                style={{
-                  borderRadius: 5,
-                  backgroundColor: colors.color5,
-                  height: 25,
-                  width: 25,
-                }}
-              />
+              <Avatar.Icon icon={"plus"} {...iconOptions} />
             </TouchableOpacity>
           </View>
         </View>
@@ -168,6 +154,15 @@ const style = StyleSheet.create({
     width: ITEM_WIDTH,
     resizeMode: "contain",
     height: 250,
+  },
+  quantity: {
+    backgroundColor: colors.color4,
+    height: 25,
+    width: 25,
+    textAlignVertical: "center",
+    textAlign: "center",
+    borderRadius: "5",
+    borderColor: colors.color5,
   },
 });
 export default ProductDetails;
