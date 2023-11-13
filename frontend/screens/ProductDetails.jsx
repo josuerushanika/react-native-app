@@ -36,6 +36,14 @@ const ProductDetails = ({ route: { params } }) => {
     },
   ];
 
+  const incrementQty=()=> {
+    setQuantity(prev => prev + 1);
+  }
+
+  const decrementQty=()=> {
+    setQuantity(prev => prev + 1);
+  }
+
   return (
     <View
       style={{
@@ -98,7 +106,7 @@ const ProductDetails = ({ route: { params } }) => {
               alignItems: "center",
             }}
           >
-            <TouchableOpacity>
+            <TouchableOpacity onPress={decrementQty}>
               <Avatar.Icon
                 icon={"minus"}
                 size={20}
@@ -124,7 +132,7 @@ const ProductDetails = ({ route: { params } }) => {
               {quantity}
             </Text>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={incrementQty}>
               <Avatar.Icon
                 icon={"plus"}
                 size={20}
