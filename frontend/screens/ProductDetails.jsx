@@ -1,8 +1,17 @@
-import { View, Text, Dimensions, StyleSheet,Image } from "react-native";
-import React, { useRef } from "react";
+import {
+  View,
+  Text,
+  Dimensions,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from "react-native";
+import React, { useRef, useState } from "react";
 import { colors, defaultStyle } from "../styles/styles";
 import Header from "../components/Header";
 import Carousel from "react-native-snap-carousel";
+import { Avatar } from "react-native-paper";
+// import Desktop from "../image/DESKTOP.jpg"
 
 const SLIDER_WIDTH = Dimensions.get("window").width;
 const ITEM_WIDTH = SLIDER_WIDTH;
@@ -10,18 +19,21 @@ const ITEM_WIDTH = SLIDER_WIDTH;
 const ProductDetails = ({ route: { params } }) => {
   console.log(params.id);
 
+  const name = "Macbook Pro";
+  const price = 34909;
   const isCarousel = useRef(null);
+  const description = "dhhddhdh";
+ const [quantity, setQuantity] = useState() 
 
   const images = [
     {
       id: "aakakakakakaka",
-      url: "djdjdjoowowsjsjsjxnxnxnxnxxnxnx",
+      url: "",
     },
     {
-        id: "aakakakakakaka",
-        url: "djdjdjoowowsjsjsjxnxnxnxnxxnxnx",
+      id: "aakakakakakaka",
+      url: "",
     },
-
   ];
 
   return (
@@ -44,7 +56,89 @@ const ProductDetails = ({ route: { params } }) => {
         data={images}
         renderItem={CarouselCardItem}
       />
-      <Text>ProductDetails</Text>
+
+      <View
+        style={{
+          backgroundColor: colors.color2,
+          padding: 35,
+          flex: 1,
+          marginTop: -380,
+          borderTopLeftRadius: 55,
+          borderTopRightRadius: 55,
+        }}
+      >
+        <Text numberOfLines={2} style={{ fontSize: 25 }}>
+          {name}
+        </Text>
+        <Text numberOfLines={2} style={{ fontSize: 18, fontWeight: "900" }}>
+          ${price}
+        </Text>
+        <Text
+          numberOfLines={2}
+          style={{ letterSpacing: 1, lineHeight: 20, marginVertical: 15 }}
+        >
+          {description}
+        </Text>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            paddingHorizontal: 5,
+          }}
+        >
+          <Text style={{ color: colors.color3, fontWeight: "100" }}>
+            Quantity
+          </Text>
+          <View
+            style={{
+              width: 80,
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <TouchableOpacity>
+              <Avatar.Icon
+                icon={"minus"}
+                size={20}
+                style={{
+                  borderRadius: 5,
+                  backgroundColor: colors.color5,
+                  height: 25,
+                  width: 25,
+                }}
+              />
+            </TouchableOpacity>
+            <Text
+              style={{
+                backgroundColor: colors.color4,
+                height: 25,
+                width: 25,
+                textAlignVertical: "center",
+                textAlign: "center",
+                borderRadius: "5",
+                borderColor: colors.color5,
+              }}
+            >
+              {quantity}
+            </Text>
+
+            <TouchableOpacity>
+              <Avatar.Icon
+                icon={"plus"}
+                size={20}
+                style={{
+                  borderRadius: 5,
+                  backgroundColor: colors.color5,
+                  height: 25,
+                  width: 25,
+                }}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
     </View>
   );
 };
