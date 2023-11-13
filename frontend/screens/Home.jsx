@@ -7,6 +7,7 @@ import { Avatar, Button } from "react-native-paper";
 import SearchModal from "../components/SearchModal";
 import ProductCard from "../components/ProductCard";
 import { useNavigation } from "@react-navigation/native";
+import Footer from "../components/Footer";
 
 const categories = [
   { category: "Nice", _id: "sndjskad" },
@@ -44,7 +45,7 @@ const Home = () => {
   const [activeSearch, setActiveSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const navigate = useNavigation()
+  const navigate = useNavigation();
 
   const categoryButtonHandler = (id) => {
     setCategory(id);
@@ -150,6 +151,8 @@ const Home = () => {
           ))}
         </ScrollView>
       </View>
+
+      <Footer activeRoute={"home"}/>
     </>
   );
 };

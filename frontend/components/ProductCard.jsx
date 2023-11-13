@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity } from "react-native";
-import { Image } from 'react-native';
+import { Image } from "react-native";
 import React from "react";
 import { colors } from "../styles/styles";
 import { Button } from "react-native-paper";
@@ -22,20 +22,20 @@ const ProductCard = ({
       <View
         style={{
           elevation: 5,
-          width: 220,
+          width: 190,
           alignItems: "center",
           justifyContent: "space-between",
           margin: 20,
           borderRadius: 20,
-          height: 400,
-          backgroundColor: i % 2 === 0 ? colors.color1 : colors.color1,
+          height: 390,
+          backgroundColor: i % 2 === 0 ? colors.color1 : colors.color2,
         }}
       >
         <Image
           source={{ uri: image }}
           style={{
             with: "100%",
-            height: "200%",
+            height: 190,
             resizeMode: "contain",
             position: "absolute",
             left: 50,
@@ -47,14 +47,14 @@ const ProductCard = ({
             flexDirection: "row",
             padding: 20,
             justifyContent: "space-between",
-            width: "100%",
+            width: "90%",
           }}
         >
           <Text
             numberOfLines={2}
             style={{
               color: i % 2 === 0 ? colors.color2 : colors.color3,
-              fontSize: 5,
+              fontSize: 25,
               fontWeight: "300",
             }}
           >
@@ -79,10 +79,14 @@ const ProductCard = ({
             borderBottomRightRadius: 20,
             borderBottomLeftRadius: 20,
             width: "100%",
-
           }}
         >
-          <Button onPress={() => addToCardHandler(id,stock)} textColor={i%2===0?colors.color1:colors.color2}>Add To Cart</Button>
+          <Button
+            onPress={() => addToCardHandler(id, stock)}
+            textColor={i % 2 === 0 ? colors.color1 : colors.color2}
+          >
+            Add To Cart
+          </Button>
         </TouchableOpacity>
       </View>
     </TouchableOpacity>
