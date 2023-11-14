@@ -10,7 +10,7 @@ import React, { useRef, useState } from "react";
 import { colors, defaultStyle } from "../styles/styles";
 import Header from "../components/Header";
 import Carousel from "react-native-snap-carousel";
-import { Avatar } from "react-native-paper";
+import { Avatar, Button } from "react-native-paper";
 // import Desktop from "../image/DESKTOP.jpg"
 
 const SLIDER_WIDTH = Dimensions.get("window").width;
@@ -32,8 +32,8 @@ const ProductDetails = ({ route: { params } }) => {
   const price = 34909;
   const stock = 5;
   const isCarousel = useRef(null);
-  const description = "dhhddhdh";
-  const [quantity, setQuantity] = useState();
+  const description = "Sedna is a trans-Neptunian object with the minor-planet number 90377";
+  const [quantity, setQuantity] = useState(1);
 
   const images = [
     {
@@ -55,6 +55,11 @@ const ProductDetails = ({ route: { params } }) => {
     if (quantity <= 1) return;
     setQuantity((prev) => prev + 1);
   };
+
+  const addToCardHandler = () => {
+    if(stock === 0) return;
+    console.log("Adding To Cart", quantity);
+  }
 
   return (
     <View
@@ -132,6 +137,9 @@ const ProductDetails = ({ route: { params } }) => {
             </TouchableOpacity>
           </View>
         </View>
+        <TouchableOpacity activeOpacity={0.9} onPress={addToCardHandler}>
+          <Button icon={"cart"} style={style.btn} textColor={colors.color2}> Add to Cart</Button>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -161,8 +169,14 @@ const style = StyleSheet.create({
     width: 25,
     textAlignVertical: "center",
     textAlign: "center",
-    borderRadius: "5",
+    borderRadius: 5,
     borderColor: colors.color5,
   },
+  btn : {
+    backgroundColor: colors.color3,
+    borderRadius: 100,
+    padding: 5,
+    marginVertical: 35,
+  }
 });
 export default ProductDetails;
