@@ -19,6 +19,7 @@
     "react-native": "0.72.6",
     "react-native-paper": "^5.11.1",
     "react-native-snap-carousel": "^4.0.0-beta.6",
+    "react-native-toast-message": "^2.1.7",
     "react-native-web": "~0.19.6"
   },
   "devDependencies": {

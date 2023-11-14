@@ -11,7 +11,7 @@ import { colors, defaultStyle } from "../styles/styles";
 import Header from "../components/Header";
 import Carousel from "react-native-snap-carousel";
 import { Avatar, Button } from "react-native-paper";
-// import Desktop from "../image/DESKTOP.jpg"
+import Toast from "react-native-toast-message";
 
 const SLIDER_WIDTH = Dimensions.get("window").width;
 const ITEM_WIDTH = SLIDER_WIDTH;
@@ -30,9 +30,10 @@ const ProductDetails = ({ route: { params } }) => {
 
   const name = "Macbook Pro";
   const price = 34909;
-  const stock = 5;
+  const stock = 30;
   const isCarousel = useRef(null);
-  const description = "Sedna is a trans-Neptunian object with the minor-planet number 90377";
+  const description =
+    "Sedna is a trans-Neptunian object with the minor-planet number 90377";
   const [quantity, setQuantity] = useState(1);
 
   const images = [
@@ -57,9 +58,16 @@ const ProductDetails = ({ route: { params } }) => {
   };
 
   const addToCardHandler = () => {
-    if(stock === 0) return;
-    console.log("Adding To Cart", quantity);
-  }
+    if (stock === 0)
+      return Toast.show({
+        type: "error",
+        text1: "Out Of Stock",
+      });
+    Toast.show({
+      type: "success",
+      text1: "Added To Cart",
+    })
+  };
 
   return (
     <View
@@ -126,11 +134,7 @@ const ProductDetails = ({ route: { params } }) => {
             <TouchableOpacity onPress={decrementQty}>
               <Avatar.Icon icon={"minus"} {...iconOptions} />
             </TouchableOpacity>
-            <Text
-              style={style.quantity}
-            >
-              {quantity}
-            </Text>
+            <Text style={style.quantity}>{quantity}</Text>
 
             <TouchableOpacity onPress={incrementQty}>
               <Avatar.Icon icon={"plus"} {...iconOptions} />
@@ -138,7 +142,10 @@ const ProductDetails = ({ route: { params } }) => {
           </View>
         </View>
         <TouchableOpacity activeOpacity={0.9} onPress={addToCardHandler}>
-          <Button icon={"cart"} style={style.btn} textColor={colors.color2}> Add to Cart</Button>
+          <Button icon={"cart"} style={style.btn} textColor={colors.color2}>
+            {" "}
+            Add to Cart
+          </Button>
         </TouchableOpacity>
       </View>
     </View>
@@ -172,11 +179,11 @@ const style = StyleSheet.create({
     borderRadius: 5,
     borderColor: colors.color5,
   },
-  btn : {
+  btn: {
     backgroundColor: colors.color3,
     borderRadius: 100,
     padding: 5,
     marginVertical: 35,
-  }
+  },
 });
 export default ProductDetails;
