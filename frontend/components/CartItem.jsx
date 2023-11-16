@@ -28,7 +28,12 @@ const CartItem = ({
           borderTopRightRadius: 100,
           borderBottomRightRadius: 100,
         }}
-      ></View>
+      >
+        <Image
+          source={{ uri: imgSrc }}
+          style={{ with: 200, height: "100%", resizeMode: "contain" }}
+        />
+      </View>
       <Text>CartItem</Text>
     </View>
   );
