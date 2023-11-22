@@ -14,26 +14,25 @@ import { useNavigation } from "@react-navigation/native";
 import { colors } from "../styles/styles";
 import { Headline, Searchbar } from "react-native-paper";
 
-
 const SearchModal = ({
-    searchQuery,
-    setActiveSearch,
-    setSearchQuery,
-    products = [],
-  }) => {
-    const navigate = useNavigation();
-    const backAction = () => {
-        setSearchQuery("");
-        setActiveSearch(false);
-        return true;
-    };
+  searchQuery,
+  setActiveSearch,
+  setSearchQuery,
+  products = [],
+}) => {
+  const navigate = useNavigation();
+  const backAction = () => {
+    setSearchQuery("");
+    setActiveSearch(false);
+    return true;
+  };
 
-    useEffect(() => {
-      BackHandler.addEventListener("hardwareBackPress", backAction);
-        return () => {
-            BackHandler.removeEventListener("hardwareBackPress", backAction);
-        }
-    }, [])
+  useEffect(() => {
+    BackHandler.addEventListener("hardwareBackPress", backAction);
+    return () => {
+      BackHandler.removeEventListener("hardwareBackPress", backAction);
+    };
+  }, []);
 
   return (
     <View
@@ -97,7 +96,6 @@ const SearchItem = ({ price, name, imgSrc, handler }) => (
         marginVertical: 30,
       }}
     >
-  
       <Image
         source={{
           uri: imgSrc,
