@@ -8,6 +8,7 @@ import SearchModal from "../components/SearchModal";
 import ProductCard from "../components/ProductCard";
 import { useNavigation } from "@react-navigation/native";
 import Footer from "../components/Footer";
+import Heading from "../components/Heading";
 
 
 const categories = [
