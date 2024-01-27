@@ -84,7 +84,20 @@ const Cart = () => {
           paddingHorizontal: 35,
         }}
       >
-        <Text>5 Items</Text>
+        <Text>5 Items</Text>   <TouchableOpacity>
+        <Button
+          style={{
+            backgroundColor: colors.color3,
+            borderRadius: 100,
+            padding: 5,
+            margin: 30,
+          }}
+          icon={"cart"}
+          textColor={colors.color2}
+        >
+          Checkout
+        </Button>
+      </TouchableOpacity>
         <Text> $ 5 </Text>
       </View>
 
